@@ -4,6 +4,7 @@ import Ember from 'ember';
 import moment from 'moment';
 
 export default Ember.Mixin.create({
+  numberOfMonths: 1,
   firstRender: true,
 
   setupPikaday: Ember.on('didRender', function() {
@@ -21,6 +22,7 @@ export default Ember.Mixin.create({
         onDraw: Ember.run.bind(this, this.onPikadayRedraw),
         firstDay: (typeof firstDay !== 'undefined') ? parseInt(firstDay, 10) : 1,
         format: this.get('format') || 'DD.MM.YYYY',
+        numberOfMonths: this.get('numberOfMonths'),
         yearRange: that.determineYearRange(),
         minDate: this.get('minDate') || null,
         maxDate: this.get('maxDate') || null,
